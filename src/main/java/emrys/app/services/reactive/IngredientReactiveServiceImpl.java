@@ -69,12 +69,12 @@ public class IngredientReactiveServiceImpl implements IngredientReactiveService 
                         .findFirst())
                         .filter(Optional::isPresent)
                 .map(ingredient-> {
-                            ingredient.get().setRecipeId();
+                            ingredient.get().setRecipeId(recipeId);
                                     return ingredient.get();
                                 }
 
                         );
-        );
+
     }
 
     @Override
@@ -140,7 +140,7 @@ public class IngredientReactiveServiceImpl implements IngredientReactiveService 
     }
 
     @Override
-    public Mono<Void> deleteById(String recipeId, String id) {
+    public void deleteById(String recipeId, String id) {
         log.debug("Deleting ingredient: " + recipeId + ":" + id);
 
         Mono<Recipe> recipeOptional = recipeRepository.findById(recipeId);
@@ -168,7 +168,7 @@ public class IngredientReactiveServiceImpl implements IngredientReactiveService 
                 recipe.getIngredients().remove(ingredient);
 
                 log.info("size of ingredient  after removal: " + recipe.getIngredients().size());
-                Mono<Recipe> recipeMono = recipeRepository.save(recipe);
+               recipeRepository.save(recipe).block();
 
             }
             else
@@ -179,6 +179,5 @@ public class IngredientReactiveServiceImpl implements IngredientReactiveService 
         else{
             log.error("recipe with id: " + recipeId + " Not Found !");
         }
-        return Mono.empty();
     }
 }

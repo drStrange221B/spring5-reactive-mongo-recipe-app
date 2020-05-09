@@ -85,7 +85,7 @@ public class IngredientReactiveController {
     {
         log.debug("deleting ingredient id: "  + id);
 
-        ingredientService.deleteById(recipeId,id).block();
+        ingredientService.deleteById(recipeId,id);
 
         return "redirect:/reactive/ingredient/recipe/" + recipeId + "/ingredients";
     }
