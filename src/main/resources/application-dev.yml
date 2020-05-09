@@ -1,0 +1,31 @@
+
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/emrys_dev?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: emrys_dev_user
+    password: rojaya
+    initialization-mode: always # for initialization of the data
+    platform: dev   # must have data-dev.sql file in resources
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+#    properties:             ## note: this will generate all the sql code at target with name emrys_database_create.sql. which can be used to insert data into the database.
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: emrys_database_create.sql
+#
+
+
+
+
+
+
