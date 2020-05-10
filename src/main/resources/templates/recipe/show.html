@@ -31,7 +31,7 @@
                             </div>
                             <div class = "col-md-3">
                                 <a class = "btn btn-default" href="#"
-                                   th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
+                                   th:href="@{'/reactive/image/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             </div>
                             <div class = "col-md-6">
                                 <img src="../../static/images/guacamole400x400WithX.jpg"
-                                     th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
+                                     th:src="@{'/reactive/image/recipe/' + ${recipe.id} + '/recipeimage'}"
                                 with="200" height="200">
                             </div>
                         </div>
